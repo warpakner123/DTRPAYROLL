@@ -1,0 +1,49 @@
+<!-- Display employees -->
+<h2>Employees</h2>
+
+{% for total_hours in total_hours_data %}
+    <h3>Total Worked Hours for {{ total_hours.date }}</h3>
+    {% for dtr_info in total_hours.employee_data %}
+        Employee ID: {{ dtr_info.employee.id }}<br/>
+        Employee Name: {{ dtr_info.employee.first_name }} {{ dtr_info.employee.last_name }} <br/>
+        Department: {{ dtr_info.employee.department }}<br/>
+        Position: {{ dtr_info.employee.position }}<br/>
+        Status: {{ dtr_info.employee.status }}<br/>
+        Employee Type: {{ dtr_info.employee.employee_type }}<br/>
+        Hourly Rate: {{ dtr_info.employee.hourly_rate }}<br/>
+
+        <!-- Display related DTRs for the current employee -->
+        Your Daily Time Record(s):<br/>
+        {% for dtr_instance in dtr_list %}
+            {% if dtr_instance.date == total_hours.date %}
+                Morning Time In: {{ dtr_instance.timeIn_AM }}<br/>
+                Morning Time Out: {{ dtr_instance.timeOut_AM }}<br/>
+                Afternoon Time In: {{ dtr_instance.timeIn_PM }}<br/>
+                Afternoon Time Out: {{ dtr_instance.timeOut_PM }}<br/>
+                Overtime In: {{ dtr_instance.overtimeIn }}<br/>
+                Overtime Out: {{ dtr_instance.overtimeOut }}<br/>
+            {% endif %}
+        {% endfor %}
+
+        Total Regular Hours: {{ dtr_info.total_regular_hours }} hours<br/>
+        Total Overtime Hours: {{ dtr_info.total_overtime_hours }} hours<br/>
+        <br/><hr>
+    {% endfor %}
+   <br/><br/>
+{% endfor %}
+
+<!-- Display departments -->
+<h2>Departments</h2>
+<ul>
+    {% for department in departments %}
+        <li>{{ department.department_name }}</li>
+    {% endfor %}
+</ul>
+
+<!-- Display positions -->
+<h2>Positions</h2>
+<ul>
+    {% for position in positions %}
+        <li>{{ position.position }}</li>
+    {% endfor %}
+</ul>
