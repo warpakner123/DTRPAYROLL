@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 
+
 class Department(models.Model):
     department_name = models.CharField(max_length=255)
     
@@ -60,7 +61,7 @@ class DTR(models.Model):
     paid=models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.employee.first_name} {self.employee.last_name}"
+        return f"{self.employee.first_name} {self.employee.last_name} - {self.date}"
     
     def total_worked_hours(self):
         # Convert time fields to datetime objects with a fixed date
@@ -85,3 +86,4 @@ class DTR(models.Model):
 class Deductions(models.Model):
     employee=models.ForeignKey(Employee, on_delete=models.CASCADE, null=True)
     loanTaxes=models.ForeignKey(LoansTaxes, on_delete=models.CASCADE, null=True)
+    

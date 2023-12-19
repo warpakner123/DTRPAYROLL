@@ -1,8 +1,19 @@
 from django.contrib import admin
-from .models import Employee, Department, Position, DTR, LoansTaxes
+from .models import Employee, Department, Position, DTR, LoansTaxes, Deductions
 
-admin.site.register(Employee)
+
+class DeductionsInline(admin.TabularInline):
+    model = Deductions
+
+@admin.register(Employee)
+class EmployeeAdmin(admin.ModelAdmin):
+    inlines=[DeductionsInline]
+
+
 admin.site.register(Department)
 admin.site.register(Position)
 admin.site.register(DTR)
 admin.site.register(LoansTaxes)
+
+
+
