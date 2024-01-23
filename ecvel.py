@@ -3,7 +3,7 @@ from datetime import datetime
 import time
 
 # get workbook
-wb_obj = xlrd.open_workbook('try.xls')
+wb_obj = xlrd.open_workbook('try2.xls')
 
 # get sheet
 sheet = wb_obj.sheet_by_index(0)
@@ -64,7 +64,7 @@ for first_array in emp_storage:
             # interval time between current and previous time
             interval_nila = current.timestamp() - previous_time.timestamp()
             print('interval: {}'.format(interval_nila / 3600))
-            # check if interval in less than a minute
+            # check if interval in less than 2 hours
             if not (interval_nila < 7200):
                 print('counted')
             else:
