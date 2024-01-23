@@ -1,0 +1,41 @@
+<!-- Login Page -->
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .login-container {
+            width: 300px;
+            margin: auto;
+            margin-top: 100px;
+        }
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .login-container label, .login-container input {
+            margin-bottom: 10px;
+        }
+        .login-container input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+
+    <h1>This is Login Page</h1>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="http://127.0.0.1:8000/employee-dashboard" method="post">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+</body>
